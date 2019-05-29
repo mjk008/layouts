@@ -1,0 +1,296 @@
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+<link rel="stylesheet" href="custom-assets/css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<style>
+	#box1 {
+		height: 100%;
+		width: 100%;
+		background: url(custom-assets/images/i1.jpg);
+		background-size: cover;
+		display: table;
+		background-attachment: fixed;
+	}
+
+	#box2 {
+		height: 100vh;
+		width: 100%;
+		overscroll-behavior-x: inherit;
+		background: url(custom-assets/images/i2.jpg);
+		background-size: cover;
+		display: table;
+		background-attachment: fixed;
+	}
+
+	#box3 {
+		height: 100vh;
+		width: 100%;
+		background-blend-mode: hard-light;
+		background-image: url(custom-assets/images/i3.jpg);
+		background-size: cover;
+		display: table;
+		background-attachment: fixed;
+	}
+
+	#box4 {
+		height: 100vh;
+		width: 100%;
+		background-blend-mode: hard-light;
+		background-image: url(custom-assets/images/b4.png);
+		background-size: auto;
+		background-position: auto;
+		display: table;
+		background-attachment: fixed;
+	}
+
+	#box5 {
+		height: 10;
+		width: 100%;
+		background-blend-mode: hard-light;
+		background-image: url(custom-assets/images/i5.jpg);
+		background-size: cover;
+		background-position: center;
+		display: table;
+		background-attachment: fixed;
+	}
+
+	h1 {
+		font-family: futura;
+		font-weight: lighter;
+		font-size: 4.5em;
+		color: aliceblue;
+	}
+
+	.lead {
+		font-family: futura;
+		color: aliceblue;
+		font-size: 1.5em;
+	}
+
+	h2 {
+		text-align: center;
+		font-family: futura;
+		font-weight: lighter;
+		font-size: 4.5em;
+		color: aliceblue;
+	}
+
+	select {
+		width: 100px;
+	}
+
+	.form-inline {
+		padding: 10%;
+		padding-left: 10%;
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	.form-inline label {
+		margin: 0;
+	}
+
+	.form-inline input,
+	select {
+		padding: 10px;
+		background-color: #fff;
+		border: 1px solid #ddd;
+
+	}
+
+	.form-inline button {
+		padding: 10px 10px;
+		background-color: dodgerblue;
+		border: 1px solid #ddd;
+		color: white;
+		cursor: pointer;
+	}
+
+	.form-inline button:hover {
+		background-color: blue;
+	}
+
+	@media (max-width: 800px) {
+		.form-inline input {
+			margin: 10px 0;
+		}
+
+		.form-inline {
+			flex-direction: column;
+			align-items: stretch;
+		}
+	}
+
+	.form-inline label {
+		padding: 5px;
+	}
+
+	#info1-k {
+		top: -20px;
+	}
+
+	#banner {
+		width: 100%;
+		height: auto;
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+</style>
+
+<div id="box5">
+	<div class="row">
+
+
+		<div class="col">
+			<br>
+			<br>
+			<br>
+			<br>
+
+			<br>
+			<h2 data-aos="fade-right">BRING HOME THE PARTY</h2>
+
+			<br /><br />
+			<br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br />
+			<br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br />
+			</p>
+		</div>
+	</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="container">
+	<div class="online-sale-div form-inline" class="align-center">
+		<label class="rs-label" for="color">MRP RS:</label>
+		<b><strike><label class="price-set" style="color:dodgerblue" for="color">400</label></strike></b>
+		<b><label class="special-price-set" style="color:dodgerblue" for="color">350</label></b>
+		<b><label for="color">Stock :</label></b>
+		<b><label class="stock-status" for="color">In Stock </label></b>
+		<?php if (isset($this->productVariation['variations']) && count($this->productVariation['variations']) > 0) { ?>
+            <?php foreach ($this->productVariation['variations'] as $variationParams) {
+                $required = ($variationParams['required'] == 1) ? 'varIsRequired' : "";
+                ?>
+                    <!-- <label for="param< ?php echo $variationParams['option_id']; ?>">Select < ?php echo $variationParams['name']; ?>:</label> -->
+                    <?php if ($variationParams['type'] == 'select') { ?>
+                        <select name="param<?php echo $variationParams['option_id']; ?>" class="variation-select outline-input cart-variation <?php echo $required; ?>" id="param<?php echo $variationParams['option_id']; ?>">
+                            <option value=""> Select <?php echo $variationParams['name']; ?></option>
+                        </select>
+                    <?php  } ?>
+            <?php } ?>
+        <?php } ?>
+		<label for="zibCode">Pincode Check:</label>
+		<input style="width: 100px;" type="text" id="zibCode" placeholder="Enter pin" name="pin">
+		<button id="<?php echo $this->product['product']['product_name']; ?>" onclick="checkPincode(this);">check</button>
+		<label>
+
+		</label>
+		<span>
+			<span><input type="button" value="+"></span>
+			<span style="width: 3%"><input style="width: 30px;" type="number" value="<?php echo !empty($this->productExist['qty']) ? $this->productExist['qty'] : 1; ?>" class="enumerator__input cart-qty" data-productname="<?php echo $this->product['product']['product_name']; ?>" onchange="this.value = minMax(this.value, 1, 1000)"></span>
+			<span><input type="button" value="-"></span>
+		</span>
+		<button data-categoryslug="<?php echo $this->product['product']['category_slug']; ?>" data-productslug="<?php echo $this->product['product']['product_slug']; ?>" data-name="<?php echo $this->product['product']['product_name']; ?>" onclick="addToCart('<?php echo $this->product['product']['product_name']; ?>',this);">Buynow</button>
+	</div>
+</div>
+
+
+<div id="box1">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6">
+				<img src="custom-assets/images/s1.png" alt="" class="w-100" />
+			</div>
+			<div class="col-md-6">
+				<div class="row align-items-center h-100">
+					<div class="col">
+						<h1 data-aos="slide-left"> R G B LIGHTS</h1>
+						<p class="lead" data-aos="slide-left">Uplift your senses with RGB lights that come with Zeb-Moving Monster 2x7 Plus to set in the perfect ambiance according to your mood.
+							<br /><br />
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="box2">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-6">
+					<img src="custom-assets/images/s3.png" alt="" class="w-100" />
+				</div>
+				<div class="col-md-6">
+					<div class="row align-items-center h-100">
+						<div class="col">
+							<h1 data-aos="slide-left"> L E D DISPLAY</h1>
+							<p class="lead" data-aos="slide-left">Zeb-Moving Monster 2x7 comes with an LED display with information pertaining to mode and volume controls. Apart from the LED display the speaker also comes with separate controls for bass, treble and volume.
+								<br /><br />
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div id="box3">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<img src="custom-assets/images/s2.png" alt="" class="w-100" />
+					</div>
+					<div class="col-md-6">
+						<div class="row align-items-center h-100">
+							<div class="col">
+								<h1 data-aos="slide-left"> Microphone </h1>
+								<p class="lead" data-aos="slide-left">Bring life to your party with a wireless mic! Host your own karaoke competitions and listen to your own recordings after you’re done singing. A microphone hook comes along with the speaker.
+									<br /><br />
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="box4">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-6">
+							<!-- image intentionally left blank-->
+							<img src="" alt="" class="w-100" />
+						</div>
+						<div class="col-md-6">
+							<div class="row align-items-center h-100">
+								<div class="col">
+									</br>
+									</br>
+									<h1 data-aos="slide-left" style="color: black;"> Multi-Connectivity Options</h1>
+									<p class="lead" data-aos="slide-left" style="color: black; ">Be the showstopper of your party with 7 hours of playback time on our DJ speaker Zeb- Moving Monster 2x7 Plus. The speaker also comes with multi-connectivity options like BT/ USB/Micro SD/ AUX and has a built-in radio too. <br /><br />
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<script src='https://code.jquery.com/jquery-3.1.1.slim.min.js'></script>
+				<script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js'></script>
+				<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+
+
+				<script src="custom-assets/js/index.js"></script>
+
+				<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+				<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+				<script>
+					AOS.init({
+						duration: 2000,
+					});
+				</script>
