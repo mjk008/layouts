@@ -80,9 +80,13 @@ select{
       width: 100px;
   }
 
+  select{
+      width: 100%
+  }
+
   .form-inline {  
 padding: 10%;
-  text-align:center;
+  padding-left: 15%;
   display: flex;
   flex-flow: row wrap;
 }
@@ -112,8 +116,8 @@ padding: 10%;
 
 @media (max-width: 800px) {
   .form-inline input {
-    margin: 10px ;
-  }
+    margin: 10px 0;
+  }}
   
   .form-inline {
     flex-direction: column;
@@ -132,6 +136,168 @@ padding: 10%;
 {
     width:100%;
     height: auto;
+}
+.bg-modal {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	top: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-contents {
+	height: 300px;
+	width: 500px;
+	background-color:wheat;
+	text-align: center;
+	padding: 20px;
+	position: relative;
+	border-radius: 4px;
+}
+.close {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 42px;
+	color: #333;
+	transform: rotate(45deg);
+	cursor: pointer;
+	&:hover {
+		color: #666;
+	}
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+/****** LOGIN MODAL ******/
+.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+
+.login-help{
+  font-size: 12px;
+}
+
+.login-btn {
+  text-align:center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.button {
+  line-height: 55px;
+  padding: 0 30px;
+  background:white;
+  color: #fff;
+  display: inline-block;
+  font-family: roboto;
+  text-decoration: none;
+  font-size: 18px;
+  top:5%;
+  border-style: solid;
+  border-width: 2px;
+  border-color:#00aeef;
+}
+
+.button:hover,
+.button:visited {
+  background: #00aeef;
+  color: #fff;
+}
+a:link {
+    color:#00aeef;
+}
+a:visited
+{
+  color:white;
 }
 body
 {
@@ -167,34 +333,48 @@ body
     
     </div>
     </div>
-    <div class="container">
-      <div class="form-inline" class="align-center">
-          <label for="color">MRP RS:</label>
-          <b><strike><label style="color:dodgerblue" for="color">400</label></strike></b>
-          <b><label style="color:dodgerblue" for="color">350</label></b>
-          <b><label for="color">Stock :</label></b>
-         <b><label style="color: green" for="color">In Stock </label></b>
-         
-          <select name="color" id="">
-              <option value="red">red</option>
-              <option value="green">green</option>
-          </select>
-          
-                 
-          <label for="">Pincode Check:</label>
-          <input style="width: 100px;" type="text" id="pwd" placeholder="Enter pin" name="pin">
-          <button type="submit">check</button>
-          <label>
+    <div class="login-btn">
+      
+      <a href="#" class="button" data-toggle="modal" data-target="#login-modal" >BUY NOW</a>
+      </div> 
+      
+      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+              <div class="modal-dialog">
+              <div class="loginmodal-container">
+                <h1>Login to Your Account</h1><br>            
+                    <form class="form-inline" class="align-center"  action="#">
+                        <label for="color">MRP RS:</label>
+                        <b><strike><label style="color:dodgerblue" for="color">400</label></strike></b>
+                        <b><label style="color:dodgerblue" for="color">350</label></b>
+                        <b><label for="color">Stock :</label></b>
+                       <b><label style="color: green" for="color">In Stock </label></b>
+                       
+                        <select name="color" id="">
+                            <option value="red">red</option>
+                            <option value="green">green</option>
+                        </select>
+                        
+                               
+                        <label for="">Pincode Check:</label>
+                        <input style="width: 100px;" type="text" id="pwd" placeholder="Enter pin" name="pin">
+                        <button type="submit">check</button>
+                        <label>
+                          
+                        </label>
+                        <span>
+                        <span><input type="button" value="+"></span>
+                        <span style="width: 3%"><input style="width: 30px;" type="text" name="qty" id="" value="1"></span>
+                        <span><input type="button" value="-"></span>
+                        </span>
+                        <button type="submit">Buynow</button>
+                        
+                      
+                    </form>
+            </div>
+                </div>
+              </div>
             
-          </label>
-          <span>
-          <span><input type="button" value="+"></span>
-          <span style="width: 3%"><input style="width: 30px;" type="text" name="qty" id="" value="1"></span>
-          <span><input type="button" value="-"></span>
-          </span>
-          <button type="submit">Buynow</button>
-      </div>
-</div>
+
 
 
   <div id="box1">
@@ -207,8 +387,8 @@ body
       <div class="col-md-6">
         <div class="row align-items-center h-100">
           <div class="col">
-          <h1 data-aos="slide-left"> R G B LIGHTS</h1>
-            <p class="lead" data-aos="slide-left">Uplift your senses with RGB lights that come with Zeb-Moving Monster 2x7 Plus to set in the perfect ambiance according to your mood.
+          <h1 data-aos="zoom-in-down"> R G B LIGHTS</h1>
+            <p class="lead" data-aos="zoom-in-down">Uplift your senses with RGB lights that come with Zeb-Moving Monster 2x7 Plus to set in the perfect ambiance according to your mood.
             <br /><br />
             </p>
           </div>
@@ -227,8 +407,8 @@ body
           <div class="col-md-6">
             <div class="row align-items-center h-100">
               <div class="col">
-              <h1 data-aos="slide-left"> L E D DISPLAY</h1>
-                <p class="lead" data-aos="slide-left">Zeb-Moving Monster 2x7 comes with an LED display with information pertaining to mode and volume controls. Apart from the LED display the speaker also comes with separate controls for bass, treble and volume.
+              <h1 data-aos="zoom-in-down"> L E D DISPLAY</h1>
+                <p class="lead" data-aos="zoom-in-down">Zeb-Moving Monster 2x7 comes with an LED display with information pertaining to mode and volume controls. Apart from the LED display the speaker also comes with separate controls for bass, treble and volume.
                 <br /><br />
                 </p>
               </div>
@@ -248,8 +428,8 @@ body
     <div class="col-md-6">
       <div class="row align-items-center h-100">
         <div class="col">
-        <h1 data-aos="slide-left"> Microphone </h1>
-          <p class="lead" data-aos="slide-left">Bring life to your party with a wireless mic! Host your own karaoke competitions and listen to your own recordings after you’re done singing. A microphone hook comes along with the speaker.
+        <h1 data-aos="zoom-in-down"> Microphone </h1>
+          <p class="lead" data-aos="zoom-in-down">Bring life to your party with a wireless mic! Host your own karaoke competitions and listen to your own recordings after you’re done singing. A microphone hook comes along with the speaker.
           <br /><br />
           </p>
         </div>
@@ -270,8 +450,8 @@ body
             <div class="col">
               </br>  
             </br>
-            <h1 data-aos="slide-left" style="color: black;"> Multi-Connectivity Options</h1>
-              <p class="lead" data-aos="slide-left" style="color: black; ">Be the showstopper of your party with 7 hours of playback time on our DJ speaker Zeb- Moving Monster 2x7 Plus. The speaker also comes with multi-connectivity options like BT/ USB/Micro SD/ AUX and has a built-in radio too.            <br /><br />
+            <h1 data-aos="zoom-in-down" style="color: black;"> Multi-Connectivity Options</h1>
+              <p class="lead" data-aos="zoom-in-down" style="color: black; ">Be the showstopper of your party with 7 hours of playback time on our DJ speaker Zeb- Moving Monster 2x7 Plus. The speaker also comes with multi-connectivity options like BT/ USB/Micro SD/ AUX and has a built-in radio too.            <br /><br />
               </p>
             </div>
           </div>
