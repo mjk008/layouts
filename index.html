@@ -84,25 +84,25 @@ select{
       width: 100%
   }
 
-  .form-inline {  
+  .online-sale-div {  
 padding: 10%;
   padding-left: 15%;
   display: flex;
   flex-flow: row wrap;
 }
 
-.form-inline label {
+.online-sale-div label {
   margin:  0;
 }
 
-.form-inline input,select {
+.online-sale-div input,select {
   padding: 10px;
   background-color: #fff;
   border: 1px solid #ddd;
   
 }
 
-.form-inline button {
+.online-sale-div button {
   padding: 10px 10px;
   background-color: dodgerblue;
   border: 1px solid #ddd;
@@ -110,21 +110,21 @@ padding: 10%;
   cursor: pointer;
 }
 
-.form-inline button:hover {
+.online-sale-div button:hover {
   background-color:blue;
 }
 
 @media (max-width: 800px) {
-  .form-inline input {
+  .online-sale-div input {
     margin: 10px 0;
   }}
   
-  .form-inline {
+  .online-sale-div {
     flex-direction: column;
     align-items: stretch;
   }
 }
-.form-inline label
+.online-sale-div label
 {
     padding: 5px;
 }
@@ -348,29 +348,29 @@ body
               <div class="modal-dialog">
               <div class="loginmodal-container">
                 <h1>Login to Your Account</h1><br>            
-                    <div class="form-inline" class="align-center"  action="#">
+                    <div class="online-sale-div" class="align-center"  action="#">
                         
                         <b><label for="color">Stock :</label></b>
-                       <b><label style="color: green" for="color">In Stock </label></b>
+                       <b><label class="stock-status" style="color: green" for="color">In Stock </label></b>
                        
-                        <select name="color" id="">
+                        <select class="variation-select outline-input cart-variation <?php echo $required; ?>" id="param<?php echo $variationParams['option_id']; ?>" name="color" id="">
                             <option value="red">red</option>
                             <option value="green">green</option>
                         </select>
                         
                                
-                        <label for="">Pincode Check:</label>
-                        <input style="width: 100px;" type="text" id="pwd" placeholder="Enter pin" name="pin">
-                        <button type="submit">check</button>
+                        <label for="zibCode">Pincode Check:</label>
+                        <input style="width: 100px;" type="text" id="zibCode" placeholder="Enter pin" name="pin">
+                        <button id="<?php echo $this->product['product']['product_name']; ?>" onclick="checkPincode(this);">check</button>
                         <label>
                           
                         </label>
                         <span>
                         <span><input type="button" value="+"></span>
-                        <span style="width: 3%"><input style="width: 30px;" type="text" name="qty" id="" value="1"></span>
+                        <span style="width: 3%"><input style="width: 30px;" type="text" name="qty" id="" value="<?php echo !empty($this->productExist['qty']) ? $this->productExist['qty'] : 1; ?>" class="enumerator__input cart-qty" data-productname="<?php echo $this->product['product']['product_name']; ?>" onchange="this.value = minMax(this.value, 1, 1000)"></span>
                         <span><input type="button" value="-"></span>
                         </span>
-                        <button type="submit">Buynow</button>
+                        <button data-categoryslug="<?php echo $this->product['product']['category_slug']; ?>" data-productslug="<?php echo $this->product['product']['product_slug']; ?>" data-name="<?php echo $this->product['product']['product_name']; ?>" onclick="addToCart('<?php echo $this->product['product']['product_name']; ?>',this);">Buynow</button>
                     </div>
             </div>
                 </div>
